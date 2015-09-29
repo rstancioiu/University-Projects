@@ -18,10 +18,10 @@ function [MatriceGain, MatriceGainPourcent] = CalculMatriceGain(f_stock,f_perso,
     nbStockPerso    = f_stock*x_perso;
 
     %--Resp commercial
-    ecartEACompta = f_commerce*x_compta;
-    ecartEAAtelier = f_commerce*x_atelier;
-    ecartEAStock = f_commerce*x_stock;
-    ecartEAPerso = f_commerce*x_perso;
+    ecartEACompta = abs(f_commerce*x_compta);
+    ecartEAAtelier = abs(f_commerce*x_atelier);
+    ecartEAStock = abs(f_commerce*x_stock);
+    ecartEAPerso = abs(f_commerce*x_perso);
     
     %--Resp personnel
     tempsM4Compta = f_perso*x_compta;
