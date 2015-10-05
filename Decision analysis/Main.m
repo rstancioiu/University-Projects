@@ -22,13 +22,14 @@ A = [tps1; tps2; tps3; tps4; tps5; tps6; tps7; MP1; MP2; MP3];
 [f_perso x_perso tempsM4] = ResponsablePersonnel(A,b,xMin,benefice,f_compta);
 %-----------------------------------------------
 
+%------- Calcul responsable atelier ------------
+[f_atelier x_atelier nbProduits] = ResponsableAtelier(A,b,xMin);
+%-----------------------------------------------
+
 %------- Calcul responsable stocks -------------
 [f_stock x_stock nbStock] = ResponsableStocks(A,b,xMin,benefice,f_compta);
 %-----------------------------------------------
 
-%------- Calcul responsable atelier ------------
-[f_atelier x_atelier nbProduits] = ResponsableAtelier(A,b,xMin);
-%-----------------------------------------------
 
 %------- Calcul responsable commercial ---------
 [f_commerce x_commerce ecartEA] = ResponsableCommercial(A,b,xMin,benefice,f_compta);

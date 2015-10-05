@@ -12,6 +12,7 @@ function [f_stock x_stock nbStock] = ResponsableStocks(A,b,xMin,beneficeMax,f_co
     title('Responsable du stock');
     ylabel('Nombre stock');
     xlabel('Pourcentage du benefice maximal');
-    x_stock = linprog(f_stock, A, b, [], [], xMin, []);
-    nbStock = f_stock*x_stock;
+    pos=62;
+    x_stock = X(:,pos);
+    nbStock = Y(1,pos);
 end

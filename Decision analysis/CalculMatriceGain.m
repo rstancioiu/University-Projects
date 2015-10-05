@@ -33,12 +33,16 @@ function [MatriceGain, MatriceGainPourcent] = CalculMatriceGain(f_stock,f_perso,
                     nbProduitsCompta    nbProduits          nbProduitsStock     nbProduitsCommerce  nbProduitsPerso
                     nbStockCompta       nbStockAtelier      nbStock             nbStockCommerce     nbStockPerso
                     ecartEACompta       ecartEAAtelier      ecartEAStock        ecartEA             ecartEAPerso
-                    tempsM4Compta       tempsM4Atelier      tempsM4Stock        ecartEAStock        tempsM4         ]
+                    tempsM4Compta       tempsM4Atelier      tempsM4Stock        ecartEAStock        tempsM4         ];
+    MatriceGain = MatriceGain'
                  
     MatriceGainPourcent = 100*[ benefice/benefice               beneficeAtelier/benefice    beneficeStock/benefice          beneficeCommerce/benefice       beneficePerso/benefice
                                 nbProduitsCompta/nbProduits     nbProduits/nbProduits       nbProduitsStock/nbProduits      nbProduitsCommerce/nbProduits   nbProduitsPerso/nbProduits
-                                nbStockCompta/nbStock           nbStockAtelier/nbStock      nbStock/nbStock                 nbStockCommerce/nbStock         nbStockPerso/nbStock
-                                ecartEACompta/ecartEA           ecartEAAtelier/ecartEA      ecartEAStock/ecartEA            ecartEA/ecartEA                 ecartEAPerso/ecartEA
-                                tempsM4Compta/tempsM4           tempsM4Atelier/tempsM4      tempsM4Stock/tempsM4            tempsM4Commerce/tempsM4         tempsM4/tempsM4             ]
-                                
+                                nbStock/nbStockCompta           nbStock/nbStockAtelier      nbStock/nbStock                 nbStock/nbStockCommerce         nbStock/nbStockPerso
+                                ecartEA/ecartEACompta           ecartEA/ecartEAAtelier      ecartEA/ecartEAStock            ecartEA/ecartEA                 ecartEA/ecartEAPerso
+                                tempsM4/tempsM4Compta           tempsM4/tempsM4Atelier      tempsM4/tempsM4Stock            tempsM4/tempsM4Commerce         tempsM4/tempsM4             ];
+    MatriceGainPourcent = MatriceGainPourcent'
+    
+    %dlmwrite('MatriceGainPourcent.csv', MatriceGainPourcent);
+    
 end
