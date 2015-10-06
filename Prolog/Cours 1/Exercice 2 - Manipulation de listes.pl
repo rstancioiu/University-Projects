@@ -4,8 +4,8 @@ append([A|L1],L2,[A|L3]) :- append(L1,L2,L3).
 
 % delete an element from list
 del(_,[],[]) :- !.
-del(X,[X|L1],L2) :- !,del(X,L1,L2).
-del(X,[Y|L1],[Y|L2]) :- !,del(X,[X|L1],L2).
+del(X,[Y|L1],L2) :- X=Y,del(X,L1,L2).
+del(X,[Y|L1],[Y|L2]) :-del(X,L1,L2).
 
 % inverse a list
 inv([],[]).
