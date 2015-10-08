@@ -13,12 +13,12 @@ function [f_commerce x_commerce ecartEA] = ResponsableCommercial(A,b,xMin,benefi
             pos=i;
         end
     end
-    pos
+    pos=73;
     figure(1);
     plot(1:100,Y);
     title('Responsable Commercial');
     xlabel('Pourcentage du benefice maximal');
     ylabel('Ecart');
     x_commerce=X(:,pos);
-    ecartEA=abs(Y(1,pos));
+    ecartEA=Y(1,pos);
 end

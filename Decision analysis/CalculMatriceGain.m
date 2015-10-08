@@ -33,7 +33,7 @@ function [MatriceGain, MatriceGainPourcent] = CalculMatriceGain(f_stock,f_perso,
                     nbProduitsCompta    nbProduits          nbProduitsStock     nbProduitsCommerce  nbProduitsPerso
                     nbStockCompta       nbStockAtelier      nbStock             nbStockCommerce     nbStockPerso
                     ecartEACompta       ecartEAAtelier      ecartEAStock        ecartEA             ecartEAPerso
-                    tempsM4Compta       tempsM4Atelier      tempsM4Stock        ecartEAStock        tempsM4         ];
+                    tempsM4Compta       tempsM4Atelier      tempsM4Stock        tempsM4Commerce        tempsM4         ];
     MatriceGain = MatriceGain'
                  
     MatriceGainPourcent = 100*[ benefice/benefice               beneficeAtelier/benefice    beneficeStock/benefice          beneficeCommerce/benefice       beneficePerso/benefice
