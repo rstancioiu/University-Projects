@@ -25,3 +25,6 @@ clear all;
 [MatriceGain, MatriceGainPourcent] = CalculMatriceGain(f_stock,f_perso,f_compta,f_atelier,f_commerce,x_compta, x_atelier, x_stock, x_commerce, x_perso, benefice, nbProduits, nbStock, ecartEA, tempsM4);
 %-----------------------------------------------
 
+%------- Calcul de la solution optimale --------
+[X,solutionOptimale] = SolutionOptimale(benefice,tempsM4,nbProduits,nbStock,ecartEA)
+%-----------------------------------------------

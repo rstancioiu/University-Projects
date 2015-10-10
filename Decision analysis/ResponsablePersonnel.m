@@ -14,7 +14,7 @@ function [f_perso x_perso tempsM4] = ResponsablePersonnel(beneficeMax,f_compta)
     title('Responsable du personnel');
     ylabel('Temps');
     xlabel('Pourcentage du benefice maximal');
-    pos=23;
+    pos=63;
     x_perso = X(:,pos);
     tempsM4 = Y(1,pos);
 end

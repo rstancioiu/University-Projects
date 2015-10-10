@@ -51,9 +51,9 @@ function [MatriceGain, MatriceGainPourcent] = CalculMatriceGain(f_stock,f_perso,
 end
 
 function [res] = ComputeSatisfactionMax(minimum,maximum,val)
-    res = 100.0*(1.0 - (maximum - val)/(maximum-minimum));
+    res = 100.0*(val - minimum)/(maximum-minimum);
 end
 
 function [res] = ComputeSatisfactionMin(minimum,maximum,val)
-    res = 100.0*(1.0 - (val - minimum)/(maximum-minimum));
+    res = 100.0*(maximum - val)/(maximum-minimum);
 end
