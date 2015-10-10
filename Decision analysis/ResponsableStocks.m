@@ -1,4 +1,5 @@
-function [f_stock x_stock nbStock] = ResponsableStocks(A,b,xMin,beneficeMax,f_compta)
+function [f_stock x_stock nbStock] = ResponsableStocks(beneficeMax,f_compta)
+    [A,b,Aeq,beq,xMin,xMax] = Initialiser();
     f_stock = [5 5 6 10 5 4];
     X=zeros(6,100);
     Y=zeros(1,100);

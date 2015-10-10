@@ -36,13 +36,24 @@ function [MatriceGain, MatriceGainPourcent] = CalculMatriceGain(f_stock,f_perso,
                     tempsM4Compta       tempsM4Atelier      tempsM4Stock        tempsM4Commerce        tempsM4         ];
     MatriceGain = MatriceGain'
                  
-    MatriceGainPourcent = 100*[ benefice/benefice               beneficeAtelier/benefice    beneficeStock/benefice          beneficeCommerce/benefice       beneficePerso/benefice
-                                nbProduitsCompta/nbProduits     nbProduits/nbProduits       nbProduitsStock/nbProduits      nbProduitsCommerce/nbProduits   nbProduitsPerso/nbProduits
-                                nbStock/nbStockCompta           nbStock/nbStockAtelier      nbStock/nbStock                 nbStock/nbStockCommerce         nbStock/nbStockPerso
-                                ecartEA/ecartEACompta           ecartEA/ecartEAAtelier      ecartEA/ecartEAStock            ecartEA/ecartEA                 ecartEA/ecartEAPerso
-                                tempsM4/tempsM4Compta           tempsM4/tempsM4Atelier      tempsM4/tempsM4Stock            tempsM4/tempsM4Commerce         tempsM4/tempsM4             ];
+    
+    [minBenefice minNbProduits maxNbStock maxTempsM4 maxEcartEA] = CalculExtremites();
+    
+    MatriceGainPourcent =  [    ComputeSatisfactionMax(minBenefice,benefice,benefice)                 ComputeSatisfactionMax(minBenefice,benefice,beneficeAtelier)    ComputeSatisfactionMax(minBenefice,benefice,beneficeStock)            ComputeSatisfactionMax(minBenefice,benefice,beneficeCommerce)          ComputeSatisfactionMax(minBenefice,benefice,beneficePerso)
+                                ComputeSatisfactionMax(minNbProduits,nbProduits,nbProduitsCompta)     ComputeSatisfactionMax(minNbProduits,nbProduits,nbProduits)     ComputeSatisfactionMax(minNbProduits,nbProduits,nbProduitsStock)      ComputeSatisfactionMax(minNbProduits,nbProduits,nbProduitsCommerce)    ComputeSatisfactionMax(minNbProduits,nbProduits,nbProduitsPerso)
+                                ComputeSatisfactionMin(nbStock,maxNbStock,nbStockCompta)              ComputeSatisfactionMin(nbStock,maxNbStock,nbStockAtelier)       ComputeSatisfactionMin(nbStock,maxNbStock,nbStock)                    ComputeSatisfactionMin(nbStock,maxNbStock,nbStockCommerce)             ComputeSatisfactionMin(nbStock,maxNbStock,nbStockPerso)
+                                ComputeSatisfactionMin(ecartEA,maxEcartEA,ecartEACompta)              ComputeSatisfactionMin(ecartEA,maxEcartEA,ecartEAAtelier)       ComputeSatisfactionMin(ecartEA,maxEcartEA,ecartEAStock)               ComputeSatisfactionMin(ecartEA,maxEcartEA,ecartEA)                     ComputeSatisfactionMin(ecartEA,maxEcartEA,ecartEAPerso)
+                                ComputeSatisfactionMin(tempsM4,maxTempsM4,tempsM4Compta)              ComputeSatisfactionMin(tempsM4,maxTempsM4,tempsM4Atelier)       ComputeSatisfactionMin(tempsM4,maxTempsM4,tempsM4Stock)               ComputeSatisfactionMin(tempsM4,maxTempsM4,tempsM4Commerce)             ComputeSatisfactionMin(tempsM4,maxTempsM4,tempsM4)             ];
     MatriceGainPourcent = MatriceGainPourcent'
     
-    %dlmwrite('MatriceGainPourcent.csv', MatriceGainPourcent);
+    dlmwrite('MatriceGainPourcent.csv', MatriceGainPourcent);
     
+end
+
+function [res] = ComputeSatisfactionMax(minimum,maximum,val)
+    res = 100.0*(1.0 - (maximum - val)/(maximum-minimum));
+end
+
+function [res] = ComputeSatisfactionMin(minimum,maximum,val)
+    res = 100.0*(1.0 - (val - minimum)/(maximum-minimum));
 end
