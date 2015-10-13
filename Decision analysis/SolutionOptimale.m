@@ -11,16 +11,16 @@ function [X,solutionOptimale] = SolutionOptimale(benefice,tempsM4,nbProduits,nbS
     beneficep  = i/100*(benefice-minBenefice)+minBenefice;
     nbProduitsp= i/100*(nbProduits-minNbProduits)+minNbProduits;
     nbStockp   = i/100*(maxNbStock - nbStock)+nbStock;
-    tempsM4p   = i/100*(maxTempsM4 - tempsM4)+maxTempsM4;
+    tempsM4p   = i/100*(maxTempsM4 - tempsM4)+tempsM4;
     ecartEAp   = i/100*(maxEcartEA - ecartEA)+ecartEA;
     A1=[A;f_compta;-f_compta   ;-f_perso;f_perso   ;f_atelier ;-f_atelier   ;-f_stock;f_stock   ;-f_commerce;f_commerce];
     b1=[b;benefice;-beneficep;-tempsM4;tempsM4p;nbProduits;-nbProduitsp;-nbStock;nbStockp;-ecartEA   ;ecartEAp];
     
-    solutionf=[-f_compta*(1/benefice)
-               (f_perso*(1/maxTempsM4))
-               -f_atelier*(1/nbProduits)
-               (f_stock*(1/nbStock))
-               (f_commerce*(1/ecartEA))];
+    solutionf=[-(f_compta*(100/(benefice-minBenefice)))
+               (f_perso*(100/(maxTempsM4 - tempsM4)))
+               -f_atelier*(100/(nbProduits-minNbProduits))
+               (f_stock*(100/(maxNbStock - nbStock)))
+               (f_commerce*(100/(maxEcartEA - ecartEA)))];
     avgf = mean(solutionf)
     
     [x,~] = linprog(avgf,A1,b1,[],[],xMin,[]);

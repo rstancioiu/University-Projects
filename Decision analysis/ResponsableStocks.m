@@ -13,7 +13,7 @@ function [f_stock x_stock nbStock] = ResponsableStocks(beneficeMax,f_compta)
     title('Responsable du stock');
     ylabel('Nombre stock');
     xlabel('Pourcentage du benefice maximal');
-    pos=63;
+    pos=80;
     x_stock = X(:,pos);
     nbStock = Y(1,pos);
 end

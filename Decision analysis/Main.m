@@ -22,7 +22,10 @@ clear all;
 %-----------------------------------------------
 
 %------- Calcul de la matrice des gains --------
-[MatriceGain, MatriceGainPourcent] = CalculMatriceGain(f_stock,f_perso,f_compta,f_atelier,f_commerce,x_compta, x_atelier, x_stock, x_commerce, x_perso, benefice, nbProduits, nbStock, ecartEA, tempsM4);
+fonctions = [f_compta;f_atelier;f_stock;f_commerce;f_perso];
+solutions = [x_compta x_atelier x_stock x_commerce x_perso];
+pointDeMire = [benefice nbProduits nbStock ecartEA tempsM4 ];
+[MatriceGain, MatriceGainPourcent] = CalculMatriceGain(fonctions,solutions,pointDeMire);
 %-----------------------------------------------
 
 %------- Calcul de la solution optimale --------
